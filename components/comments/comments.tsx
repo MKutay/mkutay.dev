@@ -1,5 +1,4 @@
 import { format } from 'date-fns';
-import { unstable_cache } from 'next/cache';
 import React from 'react';
 
 import { Label } from '@/components/ui/label';
@@ -11,18 +10,9 @@ import { getComments } from '@/lib/dataBaseQueries';
 import { commentType } from '@/config/schema';
 import { siteConfig } from '@/config/site';
 
-const getCachedComments = unstable_cache(
-  async ({ slug }: { slug: string }) => getComments({ slug }),
-  ['nextjs-blog-comments'],
-  {
-    tags: ['nextjs-blog-comments'],
-    revalidate: 180, // 3 minutes
-  }
-);
-
 export default async function Comments({ slug }: { slug: string }) {
   const session = await auth();
-  const comments: commentType[] = await getCachedComments({ slug });
+  const comments: commentType[] = await getComments({ slug });
 
   return (
     <div id="comments" className="w-full flex flex-col gap-8 mt-6">

@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { unstable_cache } from 'next/cache';
 import { Suspense } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -45,16 +44,8 @@ export function turnTagString(tag: string) {
     .join(' ');
 }
 
-const getCachedBlogViews = unstable_cache(
-  async () => getBlogViews(),
-  ['nextjs-blog-total-views'],
-  {
-    revalidate: 900, // 15 minutes
-  },
-);
-
 export async function TotalBlogViews() {
-  const views = await getCachedBlogViews();
+  const views = await getBlogViews();
 
   return (
     <div className="flex justify-center items-center text-primary font-bold tracking-tight text-lg">

@@ -11,8 +11,6 @@ import { siteConfig } from '@/config/site';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const revalidate = 1;
-
 export const metadata: Metadata = {
   metadataBase: new URL(`${siteConfig.url}`),
   title: {
