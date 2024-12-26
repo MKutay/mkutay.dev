@@ -8,6 +8,7 @@ import Footer from '@/components/footer';
 import '@/app/globals.css';
 import '@/public/styles/katex.min.css';
 import { siteConfig } from '@/config/site';
+import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -57,6 +58,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Head>
+        <script defer data-domain="mkutay.dev" src="https://pl.mkutay.dev/js/script.file-downloads.hash.outbound-links.js"></script>
+      </Head>
       <body className={`${inter.className} text-foreground bg-background`}>
         <ThemeProvider attribute="class">
           <main className="flex flex-col min-h-screen">
