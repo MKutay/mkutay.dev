@@ -59,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <PlausibleProvider domain="mkutay.dev" customDomain="pl.mkutay.dev" selfHosted={true}/>
+        <PlausibleProvider domain="mkutay.dev" customDomain="https://pl.mkutay.dev" selfHosted={true}/>
       </head>
       <body className={`${inter.className} text-foreground bg-background`}>
         <ThemeProvider attribute="class">
