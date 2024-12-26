@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
+import PlausibleProvider from 'next-plausible'
 
 import { Toaster } from '@/components/ui/toaster';
 import NavBar from '@/components/navBar';
@@ -8,7 +9,6 @@ import Footer from '@/components/footer';
 import '@/app/globals.css';
 import '@/public/styles/katex.min.css';
 import { siteConfig } from '@/config/site';
-import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -58,9 +58,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
-        <script defer data-domain="mkutay.dev" src="https://pl.mkutay.dev/js/script.file-downloads.hash.outbound-links.js"></script>
-      </Head>
+      <head>
+        <PlausibleProvider domain="mkutay.dev" customDomain="pl.mkutay.dev" selfHosted={true}/>
+      </head>
       <body className={`${inter.className} text-foreground bg-background`}>
         <ThemeProvider attribute="class">
           <main className="flex flex-col min-h-screen">
